@@ -3,9 +3,20 @@ package com.wangenyong.dsfarm;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -14,6 +25,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ListFragment extends Fragment {
+    @BindView(R.id.recyclerview) RecyclerView recyclerView;
+
+    private List<String> mData = new ArrayList<String>();
 
     public ListFragment() {
         // Required empty public constructor
@@ -27,13 +41,44 @@ public class ListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mData.add("A");
+        mData.add("B");
+        mData.add("C");
+        mData.add("D");
+        mData.add("E");
+        mData.add("F");
+        mData.add("G");
+        mData.add("H");
+        mData.add("I");
+        mData.add("J");
+        mData.add("K");
+        mData.add("L");
+        mData.add("M");
+        mData.add("N");
+        mData.add("O");
+        mData.add("P");
+        mData.add("Q");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new CommonAdapter(getActivity(), R.layout.item_list, mData) {
+            @Override
+            protected void convert(ViewHolder holder, Object o, int position) {
+                holder.setText(R.id.textview_item_list, mData.get(position));
+            }
+        });
     }
 
 }
