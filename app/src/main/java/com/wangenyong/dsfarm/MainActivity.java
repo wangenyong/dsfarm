@@ -1,14 +1,14 @@
 package com.wangenyong.dsfarm;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.roughike.bottombar.BottomBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
     @BindView(R.id.bottomBar) BottomBar bottomBar;
 
     @Override
