@@ -2,7 +2,7 @@ package com.wangenyong.dsfarm;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.*;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
@@ -37,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>(4);
 
         fragments.add(CommonFragment.newInstance("Home"));
-        fragments.add(CommonFragment.newInstance("List"));
+        fragments.add(ListFragment.newInstance());
         fragments.add(CommonFragment.newInstance("Grid"));
         fragments.add(CommonFragment.newInstance("Profile"));
 
-        fragNavController = new FragNavController(savedInstanceState, getSupportFragmentManager(), R.id.contentContainer, fragments, 0);
+        fragNavController = new FragNavController(savedInstanceState, getSupportFragmentManager(), R.id.contentContainer, fragments, TAB_HOME);
 
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
