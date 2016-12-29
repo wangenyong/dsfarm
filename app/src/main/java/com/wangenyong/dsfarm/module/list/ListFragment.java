@@ -27,8 +27,8 @@ import butterknife.ButterKnife;
  * create an instance of this fragment.
  */
 public class ListFragment extends Fragment {
-    @BindView(R.id.recyclerview) RecyclerView recyclerView;
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.recyclerview_list) RecyclerView recyclerView;
+    @BindView(R.id.toolbar_list) Toolbar toolbar;
 
     private List<String> mData = new ArrayList<String>();
 
