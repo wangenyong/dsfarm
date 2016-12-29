@@ -75,6 +75,9 @@ public class GridFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        toolbar.setTitle("Grid");
+        toolbar.inflateMenu(R.menu.menu_grid);
+
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
             @Override

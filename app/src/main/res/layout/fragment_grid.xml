@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.wangenyong.dsfarm.module.grid.GridFragment">
 
@@ -9,7 +10,8 @@
         android:id="@+id/toolbar_grid"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@android:color/white"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_grid"
