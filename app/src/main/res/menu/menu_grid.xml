@@ -4,7 +4,9 @@
     <item android:id="@+id/action_android"
         android:title="android"
         android:icon="@drawable/ic_android"
-        app:showAsAction="ifRoom"
-        />
-
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_bug"
+        android:title="bug"
+        android:icon="@drawable/ic_bug_report"
+        app:showAsAction="never" />
 </menu>

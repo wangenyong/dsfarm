@@ -10,8 +10,7 @@
         android:id="@+id/toolbar_grid"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:titleTextColor="@android:color/white"/>
+        app:theme="@style/DSThemeToolbarDarkOverflow"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_grid"

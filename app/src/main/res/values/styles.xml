@@ -15,7 +15,7 @@
         <item name="android:windowBackground">@color/colorWindowBackground</item>
     </style>
 
-    <style name="DSThemeToolbarDarkOverflow" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="DSThemeToolbarDarkOverflow" parent="Theme.AppCompat.Light">
         <!-- android:textColorPrimary is the  color of the title text
        in the Toolbar, in the Theme.AppCompat theme:  -->
         <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
@@ -38,7 +38,7 @@
         <!-- This would set the toolbar's background color,
               but setting this also changes the popup menu's background,
               even if we define popupTheme for our <Toolbar> -->
-        <!-- <item name="android:background">@color/color_primary</item> -->
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
 </resources>

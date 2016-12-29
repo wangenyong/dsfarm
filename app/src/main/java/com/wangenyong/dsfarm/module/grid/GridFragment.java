@@ -7,8 +7,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.wangenyong.dsfarm.R;
 import com.zhy.adapter.recyclerview.CommonAdapter;
@@ -77,6 +79,8 @@ public class GridFragment extends Fragment {
 
         toolbar.setTitle("Grid");
         toolbar.inflateMenu(R.menu.menu_grid);
+        toolbar.setOnMenuItemClickListener(onMenuItemClick);
+
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
@@ -86,5 +90,21 @@ public class GridFragment extends Fragment {
             }
         });
     }
+
+    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            String msg = "";
+            switch (menuItem.getItemId()) {
+                case R.id.action_android:
+                    Toast.makeText(getActivity(), "Android", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.action_bug:
+                    Toast.makeText(getActivity(), "Bug", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return true;
+        }
+    };
 
 }
