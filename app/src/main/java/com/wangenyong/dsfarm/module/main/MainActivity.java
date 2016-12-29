@@ -11,6 +11,8 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.wangenyong.dsfarm.*;
 import com.wangenyong.dsfarm.module.*;
+import com.wangenyong.dsfarm.module.grid.GridFragment;
+import com.wangenyong.dsfarm.module.list.ListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>(4);
 
         fragments.add(CommonFragment.newInstance("Home"));
-        fragments.add(com.wangenyong.dsfarm.module.list.ListFragment.newInstance());
-        fragments.add(CommonFragment.newInstance("Grid"));
+        fragments.add(ListFragment.newInstance());
+        fragments.add(GridFragment.newInstance());
         fragments.add(CommonFragment.newInstance("Profile"));
 
         fragNavController = new FragNavController(savedInstanceState, getSupportFragmentManager(), R.id.contentContainer, fragments, TAB_HOME);
