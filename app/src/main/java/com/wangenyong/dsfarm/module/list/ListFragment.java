@@ -1,7 +1,9 @@
 package com.wangenyong.dsfarm.module.list;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +29,7 @@ import butterknife.ButterKnife;
  * create an instance of this fragment.
  */
 public class ListFragment extends Fragment {
+    @BindView(R.id.collapsing_toolbar) CollapsingToolbarLayout toolbarCollapsing;
     @BindView(R.id.recyclerview_list) RecyclerView recyclerView;
     @BindView(R.id.toolbar_list) Toolbar toolbar;
 
@@ -76,7 +79,9 @@ public class ListFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        toolbar.setTitle("List");
+        toolbarCollapsing.setTitle("List");
+        toolbarCollapsing.setCollapsedTitleTextColor(Color.WHITE);
+        toolbarCollapsing.setExpandedTitleColor(Color.TRANSPARENT);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {

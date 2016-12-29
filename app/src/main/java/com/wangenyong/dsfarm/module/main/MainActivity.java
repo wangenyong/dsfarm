@@ -2,15 +2,14 @@ package com.wangenyong.dsfarm.module.main;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v4.app.*;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 
 import com.ncapdevi.fragnav.FragNavController;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
-import com.wangenyong.dsfarm.*;
-import com.wangenyong.dsfarm.module.*;
+import com.wangenyong.dsfarm.R;
+import com.wangenyong.dsfarm.module.CommonFragment;
 import com.wangenyong.dsfarm.module.grid.GridFragment;
 import com.wangenyong.dsfarm.module.list.ListFragment;
 
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
