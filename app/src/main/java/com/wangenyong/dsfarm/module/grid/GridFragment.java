@@ -62,6 +62,15 @@ public class GridFragment extends Fragment {
         mData.add("O");
         mData.add("P");
         mData.add("Q");
+        mData.add("R");
+        mData.add("S");
+        mData.add("T");
+        mData.add("U");
+        mData.add("V");
+        mData.add("W");
+        mData.add("X");
+        mData.add("Y");
+        mData.add("Z");
     }
 
     @Override
@@ -80,7 +89,6 @@ public class GridFragment extends Fragment {
         toolbar.setTitle("Grid");
         toolbar.inflateMenu(R.menu.menu_grid);
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
-
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
