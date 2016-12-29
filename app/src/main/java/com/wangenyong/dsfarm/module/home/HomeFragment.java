@@ -1,6 +1,7 @@
 package com.wangenyong.dsfarm.module.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wangenyong.dsfarm.R;
+import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
@@ -26,7 +29,7 @@ import butterknife.ButterKnife;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnItemClickListener {
     @BindView(R.id.recyclerview_home) RecyclerView recyclerView;
     @BindView(R.id.toolbar_home) Toolbar toolbar;
 
@@ -72,9 +75,20 @@ public class HomeFragment extends Fragment {
                 holder.setText(R.id.textview_item_home, s);
             }
         };
+
+        adapter.setOnItemClickListener(this);
         View headerView = mInflater.inflate(R.layout.item_home_header, null);
         HeaderAndFooterWrapper headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
         headerAndFooterWrapper.addHeaderView(headerView);
         recyclerView.setAdapter(headerAndFooterWrapper);
+    }
+
+    public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
+        Intent intent = new Intent(getActivity(), CustomViewActivity.class);
+        startActivity(intent);
+    }
+
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder,  int position) {
+        return false;
     }
 }
