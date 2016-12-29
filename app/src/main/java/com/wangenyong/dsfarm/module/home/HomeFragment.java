@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.wangenyong.dsfarm.R;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
+import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,8 @@ import butterknife.ButterKnife;
 public class HomeFragment extends Fragment {
     @BindView(R.id.recyclerview_home) RecyclerView recyclerView;
     @BindView(R.id.toolbar_home) Toolbar toolbar;
+
+    private LayoutInflater mInflater;
 
     private List<String> mData = new ArrayList<String>();
 
@@ -50,6 +53,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        mInflater = inflater;
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
@@ -68,6 +72,9 @@ public class HomeFragment extends Fragment {
                 holder.setText(R.id.textview_item_home, s);
             }
         };
-        recyclerView.setAdapter(adapter);
+        View headerView = mInflater.inflate(R.layout.item_home_header, null);
+        HeaderAndFooterWrapper headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
+        headerAndFooterWrapper.addHeaderView(headerView);
+        recyclerView.setAdapter(headerAndFooterWrapper);
     }
 }
