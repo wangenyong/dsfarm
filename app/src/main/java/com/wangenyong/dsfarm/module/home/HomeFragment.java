@@ -49,8 +49,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mData.add("Rocket");
-        mData.add("Nets");
+        mData.add(CustomViewActivity.PIEVIEW);
     }
 
     @Override
@@ -84,7 +83,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     }
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
-        Intent intent = new Intent(getActivity(), CustomViewActivity.class);
+        Intent intent = CustomViewActivity.newIntent(getActivity(), mData.get(position-1));
         startActivity(intent);
     }
 
