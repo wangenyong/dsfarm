@@ -11,6 +11,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 import com.wangenyong.dsfarm.R;
 import com.wangenyong.dsfarm.module.CommonFragment;
 import com.wangenyong.dsfarm.module.grid.GridFragment;
+import com.wangenyong.dsfarm.module.home.HomeFragment;
 import com.wangenyong.dsfarm.module.list.ListFragment;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Fragment> fragments = new ArrayList<>(4);
 
-        fragments.add(CommonFragment.newInstance("Home"));
+        fragments.add(HomeFragment.newInstance());
         fragments.add(ListFragment.newInstance());
         fragments.add(GridFragment.newInstance());
         fragments.add(CommonFragment.newInstance("Profile"));
