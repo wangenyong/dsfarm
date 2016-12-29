@@ -3,6 +3,7 @@ package com.wangenyong.dsfarm.module.home;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wangenyong.dsfarm.R;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +43,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mData.add("Rocket");
+        mData.add("Nets");
     }
 
     @Override
@@ -54,6 +59,15 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        toolbar.setTitle("Home");
 
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        CommonAdapter<String> adapter = new CommonAdapter<String>(getActivity(), R.layout.item_home, mData) {
+            @Override
+            protected void convert(ViewHolder holder, String s, int position) {
+                holder.setText(R.id.textview_item_home, s);
+            }
+        };
+        recyclerView.setAdapter(adapter);
     }
 }
