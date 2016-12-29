@@ -1,4 +1,4 @@
-package com.wangenyong.dsfarm;
+package com.wangenyong.dsfarm.module.list;
 
 
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wangenyong.dsfarm.R;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 

@@ -1,4 +1,4 @@
-package com.wangenyong.dsfarm;
+package com.wangenyong.dsfarm.module.main;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -9,6 +9,8 @@ import android.view.Window;
 import com.ncapdevi.fragnav.FragNavController;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
+import com.wangenyong.dsfarm.*;
+import com.wangenyong.dsfarm.module.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>(4);
 
         fragments.add(CommonFragment.newInstance("Home"));
-        fragments.add(ListFragment.newInstance());
+        fragments.add(com.wangenyong.dsfarm.module.list.ListFragment.newInstance());
         fragments.add(CommonFragment.newInstance("Grid"));
         fragments.add(CommonFragment.newInstance("Profile"));
 
