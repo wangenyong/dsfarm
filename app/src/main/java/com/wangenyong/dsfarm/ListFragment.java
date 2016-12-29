@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import butterknife.ButterKnife;
  */
 public class ListFragment extends Fragment {
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     private List<String> mData = new ArrayList<String>();
 
@@ -72,11 +74,14 @@ public class ListFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        toolbar.setTitle("List");
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new CommonAdapter(getActivity(), R.layout.item_list, mData) {
+        recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
             @Override
-            protected void convert(ViewHolder holder, Object o, int position) {
-                holder.setText(R.id.textview_item_list, mData.get(position));
+            protected void convert(ViewHolder holder, String text, int position) {
+                holder.setText(R.id.textview_item_list, text);
             }
         });
     }
