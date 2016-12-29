@@ -11,6 +11,7 @@
         android:id="@+id/toolbar_home"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:elevation="1dp"
         app:theme="@style/DSThemeToolbarDarkOverflow"/>
 
     <android.support.v7.widget.RecyclerView
