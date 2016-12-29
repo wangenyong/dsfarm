@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.wangenyong.dsfarm.R;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
  * Use the {@link GridFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GridFragment extends Fragment {
+public class GridFragment extends Fragment implements MultiItemTypeAdapter.OnItemClickListener {
     @BindView(R.id.recyclerview_grid) RecyclerView recyclerView;
     @BindView(R.id.toolbar_grid) Toolbar toolbar;
 
@@ -91,12 +92,22 @@ public class GridFragment extends Fragment {
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
-        recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
+        CommonAdapter<String> adapter = new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
             @Override
-            protected void convert(ViewHolder holder, String text, int position) {
-                holder.setText(R.id.textview_item_list, text);
+            protected void convert(ViewHolder holder, String s, int position) {
+                holder.setText(R.id.textview_item_list, s);
             }
-        });
+        };
+        adapter.setOnItemClickListener(this);
+        recyclerView.setAdapter(adapter);
+    }
+
+    public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
+        Toast.makeText(getActivity(), String.valueOf(mData.get(position)), Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder,  int position) {
+        return false;
     }
 
     private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
