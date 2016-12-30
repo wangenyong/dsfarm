@@ -98,6 +98,7 @@ public class ListFragment extends Fragment {
         toolbarCollapsing.setCollapsedTitleTextColor(Color.WHITE);
         toolbarCollapsing.setExpandedTitleColor(Color.TRANSPARENT);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new CommonAdapter<String>(getActivity(), R.layout.item_list, mData) {
             @Override
