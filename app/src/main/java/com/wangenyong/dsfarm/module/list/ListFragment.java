@@ -1,6 +1,7 @@
 package com.wangenyong.dsfarm.module.list;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.orhanobut.logger.Logger;
 import com.wangenyong.dsfarm.R;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -45,6 +47,14 @@ public class ListFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        // TODO Auto-generated method stub
+        super.onAttach(context);
+        Logger.d("ListFragment onAttach");
+
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mData.add("A");
@@ -64,7 +74,9 @@ public class ListFragment extends Fragment {
         mData.add("O");
         mData.add("P");
         mData.add("Q");
+        Logger.d("ListFragment onCreate");
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,12 +84,15 @@ public class ListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, view);
+        Logger.d("ListFragment onCreateView");
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        Logger.d("ListFragment onActivityCreated");
 
         toolbarCollapsing.setTitle("List");
         toolbarCollapsing.setCollapsedTitleTextColor(Color.WHITE);
@@ -92,4 +107,44 @@ public class ListFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        Logger.d("ListFragment onStart");
+
+    }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        Logger.d("ListFragment onResume");
+
+    }
+
+
+    @Override
+    public void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        Logger.d("ListFragment onPause");
+
+    }
+
+    @Override
+    public void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        Logger.d("ListFragment onStop");
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        Logger.d("ListFragment onDestroyView");
+
+    }
 }

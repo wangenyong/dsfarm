@@ -19,7 +19,7 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Logger.init(TAG).logLevel(isApkInDebug(this) ? LogLevel.FULL : LogLevel.NONE);
+        Logger.init(TAG).methodCount(0).hideThreadInfo().logLevel(isApkInDebug(this) ? LogLevel.FULL : LogLevel.NONE);
     }
 
     public static boolean isApkInDebug(Context context) {
