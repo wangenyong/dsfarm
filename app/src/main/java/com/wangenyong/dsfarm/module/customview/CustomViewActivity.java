@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.wangenyong.dsfarm.R;
-import com.wangenyong.dsfarm.bean.PieData;
+import com.wangenyong.dsfarm.data.model.PieData;
 
 import java.util.ArrayList;
 

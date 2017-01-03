@@ -1,4 +1,4 @@
-package com.wangenyong.dsfarm.bean;
+package com.wangenyong.dsfarm.data.model;
 
 import android.support.annotation.NonNull;
 

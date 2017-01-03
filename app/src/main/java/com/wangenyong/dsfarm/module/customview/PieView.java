@@ -7,7 +7,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wangenyong.dsfarm.bean.PieData;
+import com.wangenyong.dsfarm.data.model.PieData;
 
 import java.util.ArrayList;
 
