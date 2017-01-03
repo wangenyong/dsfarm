@@ -15,11 +15,22 @@ import com.orhanobut.logger.Logger;
 public class DSFarmApplication extends Application {
     public final static String TAG = "DSFarmLoggerTag";
 
+    ApplicationComponent mApplicationComponent;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         Logger.init(TAG).methodCount(0).hideThreadInfo().logLevel(isApkInDebug(this) ? LogLevel.FULL : LogLevel.NONE);
+    }
+
+    public ApplicationComponent getComponent() {
+        if (mApplicationComponent == null) {
+            mApplicationComponent = DaggerApplicationComponent.builder()
+                    .applicationModule(new ApplicationModule(this))
+                    .build();
+        }
+        return mApplicationComponent;
     }
 
     public static boolean isApkInDebug(Context context) {
