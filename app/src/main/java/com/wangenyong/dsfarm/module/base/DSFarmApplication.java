@@ -1,4 +1,4 @@
-package com.wangenyong.dsfarm.module.main;
+package com.wangenyong.dsfarm.module.base;
 
 import android.app.Application;
 import android.content.Context;
@@ -12,7 +12,7 @@ import com.orhanobut.logger.Logger;
  * Created by wangenyong on 2016/12/30.
  */
 
-public class MainApplication extends Application {
+public class DSFarmApplication extends Application {
     public final static String TAG = "DSFarmLoggerTag";
 
     @Override
