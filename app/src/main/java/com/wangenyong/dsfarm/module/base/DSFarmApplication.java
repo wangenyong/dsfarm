@@ -24,6 +24,10 @@ public class DSFarmApplication extends Application {
         Logger.init(TAG).methodCount(0).hideThreadInfo().logLevel(isApkInDebug(this) ? LogLevel.FULL : LogLevel.NONE);
     }
 
+    public static DSFarmApplication get(Context context) {
+        return (DSFarmApplication) context.getApplicationContext();
+    }
+
     public ApplicationComponent getComponent() {
         if (mApplicationComponent == null) {
             mApplicationComponent = DaggerApplicationComponent.builder()

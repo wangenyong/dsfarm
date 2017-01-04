@@ -5,6 +5,8 @@ import com.wangenyong.dsfarm.data.model.CustomView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import rx.functions.Action1;
 
 /**
@@ -13,10 +15,11 @@ import rx.functions.Action1;
 
 public class HomePresenter implements HomeContract.Presenter {
     HomeContract.View homeView;
-    private DataManager dataManager;
+    private final DataManager mDataManager;
 
-    public HomePresenter() {
-        dataManager = new DataManager();
+    @Inject
+    public HomePresenter(DataManager dataManager) {
+        mDataManager = dataManager;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void loadCustomViews() {
-        dataManager.getCustomViews()
+        mDataManager.getCustomViews()
                 .subscribe(new Action1<List<CustomView>>() {
                     @Override
                     public void call(List<CustomView> customViews) {

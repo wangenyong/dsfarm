@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.wangenyong.dsfarm.R;
 import com.wangenyong.dsfarm.data.model.CustomView;
+import com.wangenyong.dsfarm.module.base.DSFarmApplication;
 import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -21,6 +22,8 @@ import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +37,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @BindView(R.id.recyclerview_home) RecyclerView recyclerView;
     @BindView(R.id.toolbar_home) Toolbar toolbar;
 
+    @Inject
     HomePresenter presenter;
 
     private LayoutInflater mInflater;
@@ -53,7 +57,10 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new HomePresenter();
+        DaggerHomeComponent.builder()
+                .applicationComponent(DSFarmApplication.get(getActivity()).getComponent())
+                .build()
+                .inject(this);
     }
 
     @Override

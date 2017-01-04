@@ -5,6 +5,8 @@ import com.wangenyong.dsfarm.data.model.CustomView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import rx.Observable;
 
 /**
@@ -13,6 +15,7 @@ import rx.Observable;
 
 public class DataManager {
 
+    @Inject
     public DataManager() {
     }
 
