@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wangenyong.dsfarm.R;
+import com.wangenyong.dsfarm.data.model.CustomView;
 import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -29,13 +30,15 @@ import butterknife.ButterKnife;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnItemClickListener {
+public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnItemClickListener, HomeContract.View {
     @BindView(R.id.recyclerview_home) RecyclerView recyclerView;
     @BindView(R.id.toolbar_home) Toolbar toolbar;
 
+    HomeContract.Presenter presenter;
+
     private LayoutInflater mInflater;
 
-    private List<String> mData = new ArrayList<String>();
+    private List<CustomView> mData = new ArrayList<CustomView>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -49,7 +52,6 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mData.add(CustomViewActivity.PIEVIEW);
     }
 
     @Override
@@ -68,10 +70,10 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         toolbar.setTitle("Home");
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        CommonAdapter<String> adapter = new CommonAdapter<String>(getActivity(), R.layout.item_home, mData) {
+        CommonAdapter<CustomView> adapter = new CommonAdapter<CustomView>(getActivity(), R.layout.item_home, mData) {
             @Override
-            protected void convert(ViewHolder holder, String s, int position) {
-                holder.setText(R.id.textview_item_home, s);
+            protected void convert(ViewHolder holder, CustomView customView, int position) {
+                holder.setText(R.id.textview_item_home, customView.getTitle());
             }
         };
 
@@ -80,10 +82,17 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         HeaderAndFooterWrapper headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
         headerAndFooterWrapper.addHeaderView(headerView);
         recyclerView.setAdapter(headerAndFooterWrapper);
+        presenter.attachView(this);
+        presenter.loadCustomViews();
+    }
+
+    @Override
+    public void showCustomViews(List<CustomView> customViews) {
+
     }
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
-        Intent intent = CustomViewActivity.newIntent(getActivity(), mData.get(position-1));
+        Intent intent = CustomViewActivity.newIntent(getActivity(), mData.get(position-1).getTitle());
         startActivity(intent);
     }
 
