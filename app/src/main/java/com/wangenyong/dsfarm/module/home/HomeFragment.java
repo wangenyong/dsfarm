@@ -34,11 +34,12 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @BindView(R.id.recyclerview_home) RecyclerView recyclerView;
     @BindView(R.id.toolbar_home) Toolbar toolbar;
 
-    HomeContract.Presenter presenter;
+    HomePresenter presenter;
 
     private LayoutInflater mInflater;
 
     private List<CustomView> mData = new ArrayList<CustomView>();
+    private CommonAdapter<CustomView> adapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -52,6 +53,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = new HomePresenter();
     }
 
     @Override
@@ -70,7 +72,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         toolbar.setTitle("Home");
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        CommonAdapter<CustomView> adapter = new CommonAdapter<CustomView>(getActivity(), R.layout.item_home, mData) {
+        adapter = new CommonAdapter<CustomView>(getActivity(), R.layout.item_home, mData) {
             @Override
             protected void convert(ViewHolder holder, CustomView customView, int position) {
                 holder.setText(R.id.textview_item_home, customView.getTitle());
@@ -88,7 +90,8 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
 
     @Override
     public void showCustomViews(List<CustomView> customViews) {
-
+        adapter.getDatas().addAll(customViews);
+        adapter.notifyDataSetChanged();
     }
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
