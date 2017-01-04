@@ -61,6 +61,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
                 .applicationComponent(DSFarmApplication.get(getActivity()).getComponent())
                 .build()
                 .inject(this);
+        presenter.attachView(this);
     }
 
     @Override
@@ -91,12 +92,12 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         HeaderAndFooterWrapper headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
         headerAndFooterWrapper.addHeaderView(headerView);
         recyclerView.setAdapter(headerAndFooterWrapper);
-        presenter.attachView(this);
         presenter.loadCustomViews();
     }
 
     @Override
     public void showCustomViews(List<CustomView> customViews) {
+        adapter.getDatas().clear();
         adapter.getDatas().addAll(customViews);
         adapter.notifyDataSetChanged();
     }

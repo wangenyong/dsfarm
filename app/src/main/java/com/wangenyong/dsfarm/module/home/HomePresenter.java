@@ -14,7 +14,7 @@ import rx.functions.Action1;
  */
 
 public class HomePresenter implements HomeContract.Presenter {
-    HomeContract.View homeView;
+    private HomeContract.View homeView;
     private final DataManager mDataManager;
 
     @Inject
