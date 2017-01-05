@@ -17,4 +17,8 @@ public class ProfileOne implements Type {
     public int getType() {
         return type;
     }
+
+    public String getTitle() {
+        return title;
+    }
 }
