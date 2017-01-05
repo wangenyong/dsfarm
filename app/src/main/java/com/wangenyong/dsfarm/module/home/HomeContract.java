@@ -1,5 +1,7 @@
 package com.wangenyong.dsfarm.module.home;
 
+import android.app.Activity;
+
 import com.wangenyong.dsfarm.data.model.CustomView;
 import com.wangenyong.dsfarm.module.base.BasePresenter;
 import com.wangenyong.dsfarm.module.base.BaseView;
@@ -17,5 +19,6 @@ public class HomeContract {
 
     interface Presenter extends BasePresenter<View> {
         void loadCustomViews();
+        void openCustomViewActivity(Activity activity, String s);
     }
 }

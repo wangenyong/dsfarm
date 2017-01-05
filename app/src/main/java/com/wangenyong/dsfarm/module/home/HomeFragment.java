@@ -1,7 +1,6 @@
 package com.wangenyong.dsfarm.module.home;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import com.wangenyong.dsfarm.R;
 import com.wangenyong.dsfarm.data.model.CustomView;
 import com.wangenyong.dsfarm.module.base.DSFarmApplication;
-import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -96,8 +94,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     }
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
-        Intent intent = CustomViewActivity.newIntent(getActivity(), adapter.getDatas().get(position-1).getTitle());
-        startActivity(intent);
+        presenter.openCustomViewActivity(getActivity(), adapter.getDatas().get(position-1).getTitle());
     }
 
     public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder,  int position) {

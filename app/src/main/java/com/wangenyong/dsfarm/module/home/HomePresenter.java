@@ -1,7 +1,11 @@
 package com.wangenyong.dsfarm.module.home;
 
+import android.app.Activity;
+import android.content.Intent;
+
 import com.wangenyong.dsfarm.data.DataManager;
 import com.wangenyong.dsfarm.data.model.CustomView;
+import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 
 import java.util.List;
 
@@ -41,5 +45,11 @@ public class HomePresenter implements HomeContract.Presenter {
                         homeView.showCustomViews(customViews);
                     }
                 });
+    }
+
+    @Override
+    public void openCustomViewActivity(Activity activity, String s) {
+        Intent intent = CustomViewActivity.newIntent(activity, s);
+        activity.startActivity(intent);
     }
 }
