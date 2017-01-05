@@ -17,10 +17,8 @@ import com.wangenyong.dsfarm.module.base.DSFarmApplication;
 import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -39,11 +37,12 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
 
     @Inject
     HomePresenter presenter;
+    @Inject
+    CommonAdapter<CustomView> adapter;
 
     private LayoutInflater mInflater;
 
-    private List<CustomView> mData = new ArrayList<CustomView>();
-    private CommonAdapter<CustomView> adapter;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,6 +58,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         super.onCreate(savedInstanceState);
         DaggerHomeComponent.builder()
                 .applicationComponent(DSFarmApplication.get(getActivity()).getComponent())
+                .homeModule(new HomeModule(getActivity(), R.layout.item_home))
                 .build()
                 .inject(this);
         presenter.attachView(this);
@@ -80,13 +80,6 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         toolbar.setTitle("Home");
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        adapter = new CommonAdapter<CustomView>(getActivity(), R.layout.item_home, mData) {
-            @Override
-            protected void convert(ViewHolder holder, CustomView customView, int position) {
-                holder.setText(R.id.textview_item_home, customView.getTitle());
-            }
-        };
-
         adapter.setOnItemClickListener(this);
         View headerView = mInflater.inflate(R.layout.item_home_header, null);
         HeaderAndFooterWrapper headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
@@ -103,7 +96,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     }
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
-        Intent intent = CustomViewActivity.newIntent(getActivity(), mData.get(position-1).getTitle());
+        Intent intent = CustomViewActivity.newIntent(getActivity(), adapter.getDatas().get(position-1).getTitle());
         startActivity(intent);
     }
 

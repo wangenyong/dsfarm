@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 public class CustomViewActivity extends AppCompatActivity {
     private final static String KEY_CUSTOMVIEW = "com.dsfarm.customview.key";
     public static String PIEVIEW = "PieView";
+    public static String LEVELVIEW = "LevelView";
 
     @BindView(R.id.toolbar_custom_view) Toolbar toolbar;
     @BindView(R.id.framelayout_custom_view) FrameLayout frameLayout;

@@ -10,7 +10,7 @@ import dagger.Component;
  */
 
 @FragmentScoped
-@Component(dependencies = ApplicationComponent.class)
+@Component(modules = HomeModule.class, dependencies = ApplicationComponent.class)
 public interface HomeComponent {
     void inject(HomeFragment homeFragment);
 }

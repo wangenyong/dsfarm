@@ -17,6 +17,7 @@ public class FakeDataHelper {
     public static Observable<List<CustomView>> newCustomViews() {
         List<CustomView> customViews = new ArrayList<CustomView>();
         customViews.add(new CustomView(CustomViewActivity.PIEVIEW));
+        customViews.add(new CustomView(CustomViewActivity.LEVELVIEW));
         return Observable.just(customViews);
     }
 }
