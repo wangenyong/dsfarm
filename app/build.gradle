@@ -24,6 +24,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.roughike:bottom-bar:2.0.2'
     compile 'com.jakewharton:butterknife:8.4.0'
@@ -31,13 +33,11 @@ dependencies {
     compile 'com.ncapdevi:frag-nav:1.2.5'
     compile 'com.zhy:base-rvadapter:3.0.3'
     compile 'com.android.support:design:25.1.0'
-    testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.orhanobut:logger:1.15'
-
     compile 'com.google.dagger:dagger:2.8'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
-
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
 }
