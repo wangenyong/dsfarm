@@ -11,6 +11,7 @@ import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wangenyong on 2017/1/5.
@@ -22,6 +23,10 @@ public class ProfileMultiAdapter extends MultiItemTypeAdapter<Type> {
         super(context, new ArrayList<Type>());
         addItemViewDelegate(new OneDelegate());
         addItemViewDelegate(new TwoDelegate());
+    }
+
+    public void addAllData(List<Type> dataes) {
+        mDatas.addAll(dataes);
     }
 
     public class OneDelegate implements ItemViewDelegate<Type> {
