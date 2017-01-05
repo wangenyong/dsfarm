@@ -44,6 +44,8 @@ public class CustomViewActivity extends AppCompatActivity {
 
         if (type.equals(PIEVIEW)) {
             showPieView();
+        } else if (type.equals(LEVELVIEW)) {
+            showLevelView();
         }
     }
 
@@ -61,5 +63,11 @@ public class CustomViewActivity extends AppCompatActivity {
         pieDatas.add(new PieData("pie5", 2));
 
         pieView.setData(pieDatas);
+    }
+
+    private void showLevelView() {
+        View view = getLayoutInflater().inflate(R.layout.custom_levelview, null);
+
+        frameLayout.addView(view);
     }
 }
