@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:elevation="1dp"
-        app:theme="@style/DSThemeToolbarDarkOverflow"/>
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarPopupTheme"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_home"
