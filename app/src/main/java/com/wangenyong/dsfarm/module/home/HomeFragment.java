@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.wangenyong.dsfarm.R;
 import com.wangenyong.dsfarm.data.model.CustomView;
 import com.wangenyong.dsfarm.module.base.DSFarmApplication;
-import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
@@ -36,7 +35,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @Inject
     HomePresenter presenter;
     @Inject
-    CommonAdapter<CustomView> adapter;
+    HomeAdapter adapter;
 
     private LayoutInflater mInflater;
 
@@ -56,7 +55,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
         super.onCreate(savedInstanceState);
         DaggerHomeComponent.builder()
                 .applicationComponent(DSFarmApplication.get(getActivity()).getComponent())
-                .homeModule(new HomeModule(getActivity(), R.layout.item_home))
+                .homeModule(new HomeModule(getActivity()))
                 .build()
                 .inject(this);
         presenter.attachView(this);
@@ -88,8 +87,8 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
 
     @Override
     public void showCustomViews(List<CustomView> customViews) {
-        adapter.getDatas().clear();
-        adapter.getDatas().addAll(customViews);
+        adapter.clearData();
+        adapter.addAllData(customViews);
         adapter.notifyDataSetChanged();
     }
 
