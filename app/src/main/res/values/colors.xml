@@ -11,4 +11,7 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorWindowBackground">#ffffff</color>
 
+    <color name="bgLevelView">#795548</color>
+    <color name="barLevelView">#ff5722</color>
+    <color name="barBgLevelView">#5d4037</color>
 </resources>
