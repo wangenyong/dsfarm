@@ -69,6 +69,9 @@ public class ProfileFragment extends Fragment {
         dataes.add(new ProfileTwo("two"));
         dataes.add(new ProfileTwo("two"));
         dataes.add(new ProfileTwo("two"));
+        dataes.add(new ProfileTwo("two"));
+        dataes.add(new ProfileTwo("two"));
+        dataes.add(new ProfileOne("one"));
         adapter.addAllData(dataes);
         recyclerView.setAdapter(adapter);
 
