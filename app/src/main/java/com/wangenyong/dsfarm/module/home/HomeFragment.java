@@ -58,7 +58,6 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
                 .homeModule(new HomeModule(getActivity()))
                 .build()
                 .inject(this);
-        presenter.attachView(this);
     }
 
     @Override
@@ -74,8 +73,9 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar.setTitle("Home");
+        presenter.attachView(this);
 
+        toolbar.setTitle("Home");
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         adapter.setOnItemClickListener(this);
         View headerView = mInflater.inflate(R.layout.item_home_header, null);
@@ -98,5 +98,11 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
 
     public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder,  int position) {
         return false;
+    }
+
+    @Override
+    public void onDetach() {
+        presenter.detachView();
+        super.onDetach();
     }
 }

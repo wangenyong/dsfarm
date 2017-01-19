@@ -3,8 +3,8 @@ package com.wangenyong.dsfarm.module.home;
 import android.app.Activity;
 
 import com.wangenyong.dsfarm.data.model.CustomView;
-import com.wangenyong.dsfarm.module.base.BasePresenter;
-import com.wangenyong.dsfarm.module.base.BaseView;
+import com.wangenyong.dsfarm.module.base.MvpPresenter;
+import com.wangenyong.dsfarm.module.base.MvpView;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
  */
 
 public class HomeContract {
-    interface View extends BaseView {
+    interface View extends MvpView {
         void showCustomViews(List<CustomView> customViews);
     }
 
-    interface Presenter extends BasePresenter<View> {
+    interface Presenter extends MvpPresenter<View> {
         void loadCustomViews();
         void openCustomViewActivity(Activity activity, String s);
     }

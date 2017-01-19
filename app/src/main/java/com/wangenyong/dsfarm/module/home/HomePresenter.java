@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.wangenyong.dsfarm.data.DataManager;
 import com.wangenyong.dsfarm.data.model.CustomView;
+import com.wangenyong.dsfarm.module.base.BasePresenter;
 import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
 
 import java.util.List;
@@ -17,8 +18,7 @@ import rx.functions.Action1;
  * Created by wangenyong on 2017/1/4.
  */
 
-public class HomePresenter implements HomeContract.Presenter {
-    private HomeContract.View homeView;
+public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
     private final DataManager mDataManager;
 
     @Inject
@@ -27,22 +27,12 @@ public class HomePresenter implements HomeContract.Presenter {
     }
 
     @Override
-    public void attachView(HomeContract.View view) {
-        homeView = view;
-    }
-
-    @Override
-    public void detachView() {
-
-    }
-
-    @Override
     public void loadCustomViews() {
         mDataManager.getCustomViews()
                 .subscribe(new Action1<List<CustomView>>() {
                     @Override
                     public void call(List<CustomView> customViews) {
-                        homeView.showCustomViews(customViews);
+                        getView().showCustomViews(customViews);
                     }
                 });
     }
