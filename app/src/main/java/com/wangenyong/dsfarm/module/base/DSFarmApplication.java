@@ -32,6 +32,7 @@ public class DSFarmApplication extends Application {
         if (mApplicationComponent == null) {
             mApplicationComponent = DaggerApplicationComponent.builder()
                     .applicationModule(new ApplicationModule(this))
+                    .dataModule(new DataModule("https://api.github.com"))
                     .build();
         }
         return mApplicationComponent;

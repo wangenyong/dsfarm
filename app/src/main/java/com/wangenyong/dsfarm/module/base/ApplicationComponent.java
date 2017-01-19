@@ -1,6 +1,8 @@
 package com.wangenyong.dsfarm.module.base;
 
-import android.content.Context;
+import android.app.Application;
+
+import com.wangenyong.dsfarm.data.DataManager;
 
 import javax.inject.Singleton;
 
@@ -11,7 +13,8 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = ApplicationModule.class)
+@Component(modules = {ApplicationModule.class, DataModule.class})
 public interface ApplicationComponent {
-    Context context();
+    Application applicaton();
+    DataManager dataManager();
 }

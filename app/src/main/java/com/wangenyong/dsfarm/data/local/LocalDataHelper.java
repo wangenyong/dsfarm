@@ -12,9 +12,9 @@ import rx.Observable;
  * Created by wangenyong on 2017/1/4.
  */
 
-public class FakeDataHelper {
+public class LocalDataHelper {
 
-    public static Observable<List<CustomView>> newCustomViews() {
+    public Observable<List<CustomView>> newCustomViews() {
         List<CustomView> customViews = new ArrayList<CustomView>();
         customViews.add(new CustomView(CustomViewActivity.PIEVIEW));
         customViews.add(new CustomView(CustomViewActivity.LEVELVIEW));

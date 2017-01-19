@@ -1,11 +1,10 @@
 package com.wangenyong.dsfarm.data;
 
-import com.wangenyong.dsfarm.data.local.FakeDataHelper;
+import com.wangenyong.dsfarm.data.local.LocalDataHelper;
 import com.wangenyong.dsfarm.data.model.CustomView;
+import com.wangenyong.dsfarm.data.remote.RetrofitService;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import rx.Observable;
 
@@ -14,12 +13,15 @@ import rx.Observable;
  */
 
 public class DataManager {
+    private final RetrofitService mRetrofitService;
+    private final LocalDataHelper mLocalDataHelper;
 
-    @Inject
-    public DataManager() {
+    public DataManager(RetrofitService retrofitService, LocalDataHelper localDataHelper) {
+        this.mRetrofitService = retrofitService;
+        this.mLocalDataHelper = localDataHelper;
     }
 
     public Observable<List<CustomView>> getCustomViews() {
-        return FakeDataHelper.newCustomViews();
+        return mLocalDataHelper.newCustomViews();
     }
 }

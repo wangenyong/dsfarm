@@ -1,6 +1,8 @@
 package com.wangenyong.dsfarm.module.base;
 
-import android.content.Context;
+import android.app.Application;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,14 +13,15 @@ import dagger.Provides;
 
 @Module
 public class ApplicationModule {
-    private final Context mContext;
+    private final Application mApplication;
 
-    ApplicationModule(Context context) {
-        mContext = context;
+    ApplicationModule(Application application) {
+        mApplication = application;
     }
 
     @Provides
-    Context provideContext() {
-        return mContext;
+    @Singleton
+    Application provideContext() {
+        return mApplication;
     }
 }
