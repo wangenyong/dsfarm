@@ -1,7 +1,9 @@
 package com.wangenyong.dsfarm.common.view;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -12,6 +14,7 @@ import android.widget.ProgressBar;
 
 public class ProgressWebView extends WebView {
     private ProgressBar mProgressBar;
+    private Handler handler;
 
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -25,7 +28,7 @@ public class ProgressWebView extends WebView {
                 R.drawable.web_progress_bar_states);
         mProgressBar.setProgressDrawable(drawable);*/
         addView(mProgressBar);
-
+        handler = new Handler();
         setWebChromeClient(new WebChromeClient());
     }
 
@@ -34,12 +37,17 @@ public class ProgressWebView extends WebView {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             if (newProgress == 100) {
-                mProgressBar.setVisibility(GONE);
-            } else {
-                if (mProgressBar.getVisibility() == GONE)
-                    mProgressBar.setVisibility(VISIBLE);
-                mProgressBar.setProgress(newProgress);
+                mProgressBar.setProgress(100);
+                handler.postDelayed(runnable, 200);//0.2秒后隐藏进度条
+            } else if (mProgressBar.getVisibility() == GONE) {
+                mProgressBar.setVisibility(VISIBLE);
             }
+            //设置初始进度10，这样会显得效果真一点，总不能从1开始吧
+            if (newProgress < 10) {
+                newProgress = 10;
+            }
+            //不断更新进度
+            mProgressBar.setProgress(newProgress);
             super.onProgressChanged(view, newProgress);
         }
     }
@@ -54,4 +62,10 @@ public class ProgressWebView extends WebView {
         super.onScrollChanged(l, t, oldl, oldt);
     }
 
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            mProgressBar.setVisibility(View.GONE);
+        }
+    };
 }
