@@ -38,8 +38,14 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
     }
 
     @Override
-    public void openCustomViewActivity(Activity activity, String s) {
-        Intent intent = CustomViewActivity.newIntent(activity, s);
-        activity.startActivity(intent);
+    public void openCustomViewActivity(Activity activity, CustomView customView) {
+        switch (customView.getType()) {
+            case CustomView.WEBVIEW:
+                break;
+            default:
+                Intent intent = CustomViewActivity.newIntent(activity, customView.getTitle());
+                activity.startActivity(intent);
+        }
+
     }
 }

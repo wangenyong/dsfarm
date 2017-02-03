@@ -18,6 +18,7 @@ public class LocalDataHelper {
         List<CustomView> customViews = new ArrayList<CustomView>();
         customViews.add(new CustomView(CustomViewActivity.PIEVIEW));
         customViews.add(new CustomView(CustomViewActivity.LEVELVIEW));
+        customViews.add(new CustomView("webview", CustomView.WEBVIEW));
         return Observable.just(customViews);
     }
 }

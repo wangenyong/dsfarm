@@ -19,6 +19,6 @@ public class HomeContract {
 
     interface Presenter extends MvpPresenter<View> {
         void loadCustomViews();
-        void openCustomViewActivity(Activity activity, String s);
+        void openCustomViewActivity(Activity activity, CustomView customView);
     }
 }

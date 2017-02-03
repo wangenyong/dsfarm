@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment implements MultiItemTypeAdapter.OnIte
     }
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder,  int position) {
-        presenter.openCustomViewActivity(getActivity(), adapter.getDatas().get(position-1).getTitle());
+        presenter.openCustomViewActivity(getActivity(), adapter.getDatas().get(position-1));
     }
 
     public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder,  int position) {
