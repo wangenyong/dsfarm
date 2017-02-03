@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.wangenyong.dsfarm.R;
+import com.wangenyong.dsfarm.common.view.ProgressWebView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,7 +16,7 @@ public class WebViewActivity extends AppCompatActivity {
     private final static String KEY_WEBVIEW = "com.dsfarm.webview.key";
 
     @BindView(R.id.toolbar_webview) Toolbar mToolbar;
-    @BindView(R.id.webview) WebView mWebView;
+    @BindView(R.id.progress_webview) ProgressWebView mProgressWebView;
 
 
     public static Intent newIntent(Context context, String s) {
@@ -34,15 +33,17 @@ public class WebViewActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new WebViewClient(){
+        mProgressWebView.getSettings().setJavaScriptEnabled(true);
+/*
+        mProgressWebView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
             }
         });
+*/
 
-        mWebView.loadUrl("http://www.dswey.com");
+        mProgressWebView.loadUrl("http://www.dswey.com");
     }
 }
