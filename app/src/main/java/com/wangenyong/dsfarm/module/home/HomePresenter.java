@@ -7,6 +7,7 @@ import com.wangenyong.dsfarm.data.DataManager;
 import com.wangenyong.dsfarm.data.model.CustomView;
 import com.wangenyong.dsfarm.module.base.BasePresenter;
 import com.wangenyong.dsfarm.module.customview.CustomViewActivity;
+import com.wangenyong.dsfarm.module.webview.WebViewActivity;
 
 import java.util.List;
 
@@ -39,11 +40,14 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
 
     @Override
     public void openCustomViewActivity(Activity activity, CustomView customView) {
+        Intent intent;
         switch (customView.getType()) {
             case CustomView.WEBVIEW:
+                intent = WebViewActivity.newIntent(activity, customView.getTitle());
+                activity.startActivity(intent);
                 break;
             default:
-                Intent intent = CustomViewActivity.newIntent(activity, customView.getTitle());
+                intent = CustomViewActivity.newIntent(activity, customView.getTitle());
                 activity.startActivity(intent);
         }
 
