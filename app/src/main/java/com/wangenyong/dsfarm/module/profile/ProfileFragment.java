@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.wangenyong.dsfarm.R;
 import com.wangenyong.dsfarm.data.model.ProfileOne;
+import com.wangenyong.dsfarm.data.model.ProfileThree;
 import com.wangenyong.dsfarm.data.model.ProfileTwo;
 import com.wangenyong.dsfarm.data.model.Type;
 
@@ -72,13 +73,28 @@ public class ProfileFragment extends Fragment {
         dataes.add(new ProfileTwo("two"));
         dataes.add(new ProfileTwo("two"));
         dataes.add(new ProfileOne("one"));
+
+        List<String> strings = new ArrayList<String>();
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        strings.add("three");
+        dataes.add(new ProfileThree("three", strings));
+        dataes.add(new ProfileOne("one"));
         adapter.addAllData(dataes);
         recyclerView.setAdapter(adapter);
 
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (adapter.getDatas().get(position).getType() == Type.PROFILE_ONE) {
+                if (adapter.getDatas().get(position).getType() == Type.PROFILE_ONE || adapter.getDatas().get(position).getType() == Type.PROFILE_THREE) {
                     return 4;
                 } else {
                     return 1;

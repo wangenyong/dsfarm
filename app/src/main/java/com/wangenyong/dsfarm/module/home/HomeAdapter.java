@@ -18,7 +18,7 @@ public class HomeAdapter extends CommonAdapter<CustomView> {
 
     public HomeAdapter(Context context) {
         super(context, R.layout.item_home, new ArrayList<CustomView>());
-    }
+}
 
     @Override
     protected void convert(ViewHolder holder, CustomView customView, int position) {

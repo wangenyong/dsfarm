@@ -7,6 +7,7 @@ package com.wangenyong.dsfarm.data.model;
 public interface Type {
     int PROFILE_ONE = 1;
     int PROFILE_TWO = 2;
+    int PROFILE_THREE = 3;
 
     public int getType();
 }
